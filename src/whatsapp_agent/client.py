@@ -13,10 +13,10 @@ import mimetypes
 import os
 import threading
 import time
-from collections.abc import Iterator
+from collections.abc import Callable, Iterator
 from contextlib import contextmanager
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 import requests
 from dotenv import load_dotenv

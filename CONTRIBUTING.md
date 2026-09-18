@@ -20,7 +20,7 @@ mypy src
 pytest --cov
 ```
 
-All three run in CI on every PR (Python 3.9–3.13). Tests use the `responses` library to mock HTTP — no live `WHATSAPP_API_KEY` is needed to run the suite, and none should ever be required for a test to pass.
+All three run in CI on every PR (Python 3.10–3.13). Tests use the `responses` library to mock HTTP — no live `WHATSAPP_API_KEY` is needed to run the suite, and none should ever be required for a test to pass.
 
 ## Ground rules
 

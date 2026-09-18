@@ -9,7 +9,7 @@ description = "Python SDK and MCP server for the WhatsApp Agent Platform"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [
     { name = "M Abdullah" },
 ]
@@ -19,7 +19,6 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -63,14 +62,14 @@ packages = ["src/whatsapp_agent"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py39"
+target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
 ignore = ["E501"]
 
 [tool.mypy]
-python_version = "3.10"  # mypy dropped 3.9 target support; runtime still supports 3.9 via `from __future__ import annotations` everywhere (PEP 563 defers all annotation evaluation)
+python_version = "3.10"
 packages = ["whatsapp_agent"]
 mypy_path = "src"
 strict = true

@@ -26,7 +26,7 @@ pip install whatsapp-agent          # SDK only
 pip install "whatsapp-agent[mcp]"   # SDK + MCP server
 ```
 
-Requires Python 3.9+. Or, for the simple single-file option, just copy [`standalone/whatsapp_agent.py`](standalone/whatsapp_agent.py) into your project as `whatsapp_agent.py` — no install step.
+Requires Python 3.10+ (the bundled MCP SDK requires it). Or, for the simple single-file option -- which has no such dependency and works on Python 3.9+ -- just copy [`standalone/whatsapp_agent.py`](standalone/whatsapp_agent.py) into your project as `whatsapp_agent.py`, no install step.
 
 ## Get an API token
 
