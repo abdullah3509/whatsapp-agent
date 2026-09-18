@@ -1,0 +1,90 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "whatsapp-agent"
+version = "0.1.0"
+description = "Python SDK and MCP server for the WhatsApp Agent Platform"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.9"
+authors = [
+    { name = "Abdullah Shahid" },
+]
+keywords = ["whatsapp", "agent", "sdk", "mcp", "n8n", "chatbot", "llm-tools"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Communications :: Chat",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = [
+    "requests>=2.28",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+mcp = [
+    "mcp>=1.2.0",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "responses>=0.25",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "types-requests",
+    "build",
+    "twine",
+]
+
+[project.urls]
+Homepage = "https://github.com/abdullahshahid/whatsapp-agent"
+Documentation = "https://github.com/abdullahshahid/whatsapp-agent/tree/main/docs"
+Repository = "https://github.com/abdullahshahid/whatsapp-agent"
+Issues = "https://github.com/abdullahshahid/whatsapp-agent/issues"
+Changelog = "https://github.com/abdullahshahid/whatsapp-agent/blob/main/CHANGELOG.md"
+
+[project.scripts]
+whatsapp-agent = "whatsapp_agent.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/whatsapp_agent"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"  # mypy dropped 3.9 target support; runtime still supports 3.9 via `from __future__ import annotations` everywhere (PEP 563 defers all annotation evaluation)
+packages = ["whatsapp_agent"]
+mypy_path = "src"
+strict = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "mcp.*"
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--cov=whatsapp_agent --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["src/whatsapp_agent"]
