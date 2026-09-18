@@ -138,6 +138,7 @@ Everything in the developer manual is implemented:
 - [`docs/errors.md`](docs/errors.md) — exception types and what to do
 - [`docs/rate-limits.md`](docs/rate-limits.md) — per-endpoint budgets and backoff
 - [`docs/migration.md`](docs/migration.md) — coming from the original single-file `whatsapp_agent.py`
+- [`llms.txt`](llms.txt) — a machine-readable index of this project for LLMs/AI coding assistants, per the [llms.txt convention](https://llmstxt.org)
 
 ## Roadmap
 

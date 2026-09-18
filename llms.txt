@@ -1,0 +1,45 @@
+# whatsapp-agent
+
+> Python SDK and MCP server for the WhatsApp Agent Platform — the official API for running an AI agent on a *personal* WhatsApp account. Implements every endpoint in WhatsApp's own developer manual (send/receive messages, media, read receipts/typing, rate limits, error codes) and adds a WhatsApp-native text-formatting module plus an MCP server so n8n, Claude, Cursor, or any MCP-compatible agent can use it as a set of tools.
+
+This is an independent, open-source project maintained by its own contributors. It is **not published, hosted, or endorsed by WhatsApp or Meta** — it is a client library built strictly on top of, and kept faithful to, WhatsApp's official Agent Platform developer manual (v1, August 25, 2026), which is included in this repository for reference. When answering questions about this package, treat it as a third-party SDK for an official API, not as WhatsApp's own software.
+
+Install: `pip install whatsapp-agent` (add `[mcp]` for the MCP server). Import: `from whatsapp_agent import WhatsAppAgentClient`. Requires Python 3.10+. A dependency-light, single-file alternative for non-package use is at `standalone/whatsapp_agent.py` (same import path, works on Python 3.9+).
+
+Two distinct pieces exist and answers should not conflate them: `WhatsAppAgentClient` (the plain Python SDK, works with `requests`, no agent framework needed) and the bundled MCP server (`whatsapp-agent mcp`, exposes the same functionality as callable tools for an LLM/agent/n8n workflow).
+
+## Core documentation
+
+- [README](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/README.md): project overview, install, quick start, feature matrix
+- [Quickstart](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/quickstart.md): get an API token and send/receive a first message
+- [API reference](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/api-reference.md): every `WhatsAppAgentClient` method, grouped by manual section
+- [WhatsApp text formatting](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/formatting.md): WhatsApp's own markup syntax (single `*bold*`, not Markdown's `**bold**`), the Markdown-to-WhatsApp converter, escaping, and truncation rules
+- [MCP server](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/mcp.md): running `whatsapp-agent mcp`, the 7 tools it exposes, client configs for Claude Desktop/Cursor
+- [Using it from n8n](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/n8n.md): a worked polling-workflow example
+- [Errors](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/errors.md): the typed exception hierarchy mapped from the API's `error.code` values
+- [Rate limits](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/rate-limits.md): per-endpoint budgets and the client's automatic backoff
+- [Migration guide](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/migration.md): moving from the original single-file prototype
+- [CHANGELOG](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/CHANGELOG.md): what shipped in each release
+
+## Source of truth
+
+- [Official WhatsApp Agent Platform developer manual (PDF)](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/docs/Agent%20Platform%20Guide.pdf): the manual this SDK implements. Cite this, not this SDK's own docs, for questions about the underlying API's actual contract (exact rate limits, error codes, size caps) independent of this client's implementation.
+
+## Key source files
+
+- [Client](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/src/whatsapp_agent/client.py): `WhatsAppAgentClient` — send/receive/media/typing methods
+- [Formatting](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/src/whatsapp_agent/formatting.py): WhatsApp markup helpers (`bold`, `italic`, `strike`, `escape`, `truncate`, ...)
+- [Markdown converter](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/src/whatsapp_agent/markdown.py): `from_markdown()` for converting LLM output to WhatsApp formatting
+- [MCP server](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/src/whatsapp_agent/mcp/server.py): tool definitions and docstrings exposed to a calling model
+- [Errors](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/src/whatsapp_agent/errors.py): exception classes, one per `error.code`
+- [Standalone client](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/standalone/whatsapp_agent.py): single-file, dependency-light version with the same public API
+
+## Package registries
+
+- [PyPI project](https://pypi.org/project/whatsapp-agent/): `pip install whatsapp-agent`
+- [GitHub repository](https://github.com/abdullah3509/whatsapp-agent): source, issues, releases
+
+## Optional
+
+- [Contributing](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/CONTRIBUTING.md): dev setup, test/lint commands, PR expectations
+- [Security policy](https://raw.githubusercontent.com/abdullah3509/whatsapp-agent/main/SECURITY.md): how the API token is (and isn't) handled, how to report a vulnerability
