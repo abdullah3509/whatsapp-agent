@@ -11,7 +11,7 @@ license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.9"
 authors = [
-    { name = "Abdullah Shahid" },
+    { name = "M Abdullah" },
 ]
 keywords = ["whatsapp", "agent", "sdk", "mcp", "n8n", "chatbot", "llm-tools"]
 classifiers = [
@@ -49,11 +49,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/abdullahshahid/whatsapp-agent"
-Documentation = "https://github.com/abdullahshahid/whatsapp-agent/tree/main/docs"
-Repository = "https://github.com/abdullahshahid/whatsapp-agent"
-Issues = "https://github.com/abdullahshahid/whatsapp-agent/issues"
-Changelog = "https://github.com/abdullahshahid/whatsapp-agent/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/abdullah3509/whatsapp-agent"
+Documentation = "https://github.com/abdullah3509/whatsapp-agent/tree/main/docs"
+Repository = "https://github.com/abdullah3509/whatsapp-agent"
+Issues = "https://github.com/abdullah3509/whatsapp-agent/issues"
+Changelog = "https://github.com/abdullah3509/whatsapp-agent/blob/main/CHANGELOG.md"
 
 [project.scripts]
 whatsapp-agent = "whatsapp_agent.cli:main"

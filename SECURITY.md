@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please **do not** open a public GitHub issue for a security vulnerability. Instead, use GitHub's private [Security Advisories](https://github.com/abdullahshahid/whatsapp-agent/security/advisories/new) reporting feature, or email the maintainer directly. Include:
+Please **do not** open a public GitHub issue for a security vulnerability. Instead, use GitHub's private [Security Advisories](https://github.com/abdullah3509/whatsapp-agent/security/advisories/new) reporting feature, or email the maintainer directly. Include:
 
 - A description of the vulnerability and its impact.
 - Steps to reproduce (a minimal script is ideal).

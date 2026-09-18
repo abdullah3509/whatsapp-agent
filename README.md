@@ -1,6 +1,6 @@
 # whatsapp-agent
 
-[![CI](https://github.com/abdullahshahid/whatsapp-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/abdullahshahid/whatsapp-agent/actions/workflows/ci.yml)
+[![CI](https://github.com/abdullah3509/whatsapp-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/abdullah3509/whatsapp-agent/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/whatsapp-agent.svg)](https://pypi.org/project/whatsapp-agent/)
 [![Python versions](https://img.shields.io/pypi/pyversions/whatsapp-agent.svg)](https://pypi.org/project/whatsapp-agent/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

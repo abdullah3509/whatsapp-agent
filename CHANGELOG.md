@@ -31,4 +31,4 @@ Initial public release. Restructures the original single-file `whatsapp_agent.py
 - No handling for the Base64 (inbound message) vs. hex (`GET /media/<id>`) encoding mismatch in the `sha256` field.
 - No typing-indicator refresh; a reply slower than 25 seconds silently lost the indicator partway through.
 
-[0.1.0]: https://github.com/abdullahshahid/whatsapp-agent/releases/tag/v0.1.0
+[0.1.0]: https://github.com/abdullah3509/whatsapp-agent/releases/tag/v0.1.0

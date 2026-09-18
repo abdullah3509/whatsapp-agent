@@ -5,7 +5,7 @@ Thanks for considering a contribution to `whatsapp-agent`.
 ## Setup
 
 ```bash
-git clone https://github.com/abdullahshahid/whatsapp-agent.git
+git clone https://github.com/abdullah3509/whatsapp-agent.git
 cd whatsapp-agent
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev,mcp]"
