@@ -3,11 +3,11 @@
 Before this became an installable package, this project was a single file, `whatsapp_agent.py`, dropped into a project and imported directly. That file has been replaced by two things:
 
 - **The `whatsapp_agent` package** (`pip install whatsapp-agent`) — the same functionality, restructured, with the correctness fixes described below, plus typed models, automatic rate limiting, text formatting, and an MCP server. Use this for an agent or a long-running workflow.
-- **[`whatsapp_agent_simple.py`](../whatsapp_agent_simple.py)** — a single-file, dependency-light (`requests` + `python-dotenv` only) client with the same two correctness fixes (offset tracking, `agent:` recipient rejection) applied, for projects that want to keep copy-pasting one file rather than installing a package. This is the direct successor to the original prototype — same shape, same method names, bugs fixed.
+- **[`standalone/whatsapp_agent.py`](../standalone/whatsapp_agent.py)** — a single-file, dependency-light (`requests` + `python-dotenv` only) client with the same two correctness fixes (offset tracking, `agent:` recipient rejection) applied, for projects that want to keep copy-pasting one file rather than installing a package. Copy it into your project as `whatsapp_agent.py` and `from whatsapp_agent import WhatsAppAgentClient` works exactly as it would after `pip install whatsapp-agent` — this is the direct successor to the original prototype, same shape, same method names, bugs fixed.
 
 If you had the original file vendored into a project, here's what changed in each replacement.
 
-## If you're moving to `whatsapp_agent_simple.py`
+## If you're moving to `standalone/whatsapp_agent.py`
 
 Only two behavioral changes, both bug fixes, described in [Fixes that apply to both replacements](#fixes-that-apply-to-both-replacements) below. Everything else (method names, signatures, the raw-dict-based `Updates`/message shape) is unchanged; just replace your copy of the old file with the new one.
 
@@ -17,7 +17,7 @@ Read on for the rest of this page.
 
 ## Fixes that apply to both replacements
 
-Both `whatsapp_agent_simple.py` and the full package fix the same two bugs from the original prototype:
+Both `standalone/whatsapp_agent.py` and the full package fix the same two bugs from the original prototype:
 
 1. **`listen()` no longer risks dropping a message.** See [below](#listen-no-longer-risks-dropping-a-message) for the full explanation.
 2. **`to` rejects an `agent:<id>` recipient locally** instead of forwarding a request the API always rejects with HTTP 400 / `error.code` 131009 (manual p.5).

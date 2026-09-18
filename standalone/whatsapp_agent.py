@@ -2,11 +2,20 @@
 """Simple, single-file client for the WhatsApp Agent Platform
 (https://api.whatsapp.com/agent/v1).
 
-This is the "just fire off a request" option: copy this one file into a
-project (it needs only `requests` and `python-dotenv`) when you want to send
-or receive WhatsApp messages from a plain script, a cron job, a monitoring
+This is the "just fire off a request" option: copy this one file --
+`whatsapp_agent.py` -- directly into your own project's source directory
+(it needs only `requests` and `python-dotenv`) when you want to send or
+receive WhatsApp messages from a plain script, a cron job, a monitoring
 alert, or any other system that isn't an AI agent and doesn't need the full
-package's typed models, per-endpoint rate limiting, or MCP server.
+package's typed models, per-endpoint rate limiting, or MCP server. Because
+the filename matches the real package's import path, the code you write
+against it --
+
+    from whatsapp_agent import WhatsAppAgentClient
+
+-- is *exactly* the same import you'd use after `pip install whatsapp-agent`.
+If you outgrow this file later, delete it and `pip install whatsapp-agent`;
+no import in your code needs to change.
 
 For an agent/workflow integration -- typed models, automatic rate limiting,
 WhatsApp text formatting, and an MCP server for n8n/Claude/Cursor -- install

@@ -15,7 +15,7 @@ A Python SDK and MCP server for the [WhatsApp Agent Platform](https://api.whatsa
 ## Two ways to use this
 
 - **Full package** (`pip install whatsapp-agent`) — typed models, automatic per-endpoint rate limiting, WhatsApp text formatting, and an MCP server for n8n/Claude/Cursor. Reach for this for an agent, a workflow, or anything long-running (a `listen()` loop).
-- **[`whatsapp_agent_simple.py`](whatsapp_agent_simple.py)** — a single, dependency-light file (`requests` + `python-dotenv`, nothing else) you copy directly into a project. For a monitoring script, a cron job, a web app's notification sender, or anything else that just needs to fire a plain HTTP request to send a WhatsApp message and isn't an AI agent at all. Same method names as the full client (`send_text`, `send_image`, `listen`, ...), no `pip install` required.
+- **[`standalone/whatsapp_agent.py`](standalone/whatsapp_agent.py)** — a single, dependency-light file (`requests` + `python-dotenv`, nothing else) you copy directly into your project as `whatsapp_agent.py`. For a monitoring script, a cron job, a web app's notification sender, or anything else that just needs to fire a plain HTTP request to send a WhatsApp message and isn't an AI agent at all. Its filename matches the installed package's import path, so `from whatsapp_agent import WhatsAppAgentClient` is exactly the same line of code either way — copy the file today, switch to `pip install whatsapp-agent` later, and nothing else in your code changes.
 
 Both talk to the same API and cover the same endpoints; the standalone file just trades the package's extra machinery (rate limiting, typed models, MCP) for zero install footprint.
 
@@ -26,7 +26,7 @@ pip install whatsapp-agent          # SDK only
 pip install "whatsapp-agent[mcp]"   # SDK + MCP server
 ```
 
-Requires Python 3.9+. Or, for the simple single-file option, just copy [`whatsapp_agent_simple.py`](whatsapp_agent_simple.py) into your project — no install step.
+Requires Python 3.9+. Or, for the simple single-file option, just copy [`standalone/whatsapp_agent.py`](standalone/whatsapp_agent.py) into your project as `whatsapp_agent.py` — no install step.
 
 ## Get an API token
 

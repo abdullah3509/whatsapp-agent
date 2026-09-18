@@ -1,8 +1,15 @@
-"""Tests for the standalone whatsapp_agent_simple.py -- specifically the two
-correctness fixes it carries forward from the full package (offset
+"""Tests for the standalone standalone/whatsapp_agent.py -- specifically the
+two correctness fixes it carries forward from the full package (offset
 tracking in listen(), and rejecting an agent:<id> recipient locally).
 Everything else in that file mirrors the original prototype and isn't
 re-tested exhaustively here.
+
+Loaded from its file path (rather than `import whatsapp_agent`) under the
+name `_standalone_whatsapp_agent` in sys.modules, so it's never confused
+with the real installed `whatsapp_agent` package this test suite also
+exercises elsewhere -- the whole point of this file is that its *content*
+is copy-paste-compatible with that package's import path, not that the two
+should collide inside this repo's own test run.
 """
 from __future__ import annotations
 
@@ -15,13 +22,13 @@ import responses
 
 BASE_URL = "https://api.whatsapp.com/agent/v1"
 
-_MODULE_PATH = Path(__file__).resolve().parent.parent / "whatsapp_agent_simple.py"
+_MODULE_PATH = Path(__file__).resolve().parent.parent / "standalone" / "whatsapp_agent.py"
 
 
 def _load_module():
-    spec = importlib.util.spec_from_file_location("whatsapp_agent_simple", _MODULE_PATH)
+    spec = importlib.util.spec_from_file_location("_standalone_whatsapp_agent", _MODULE_PATH)
     module = importlib.util.module_from_spec(spec)
-    sys.modules["whatsapp_agent_simple"] = module
+    sys.modules["_standalone_whatsapp_agent"] = module
     spec.loader.exec_module(module)
     return module
 

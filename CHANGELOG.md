@@ -19,7 +19,7 @@ Initial public release. Restructures the original single-file `whatsapp_agent.py
 - `client.typing()` context manager that keeps a typing indicator alive past its 25-second TTL.
 - `client.reply_text()` convenience for threaded replies.
 - `verify_media_sha256()` / `hash_media_bytes()` handling the Base64-vs-hex encoding mismatch between an inbound message's `sha256` and `GET /media/<id>`'s.
-- `whatsapp_agent_simple.py` — a standalone, dependency-light (`requests` + `python-dotenv` only) single-file client for notification-sending use cases outside an agent/workflow context, carrying forward the two correctness fixes (offset tracking, `agent:` recipient rejection) without the rest of the package's machinery.
+- `standalone/whatsapp_agent.py` — a standalone, dependency-light (`requests` + `python-dotenv` only) single-file client for notification-sending use cases outside an agent/workflow context, carrying forward the two correctness fixes (offset tracking, `agent:` recipient rejection) without the rest of the package's machinery. Named to match the installed package's import path, so `from whatsapp_agent import WhatsAppAgentClient` works identically whether you copied this file or ran `pip install`.
 
 ### Fixed (relative to the original single-file prototype)
 
